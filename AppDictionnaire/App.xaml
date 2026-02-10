@@ -1,8 +1,8 @@
-﻿<Application x:Class="AppDictionnaire.App"
+<Application x:Class="AppDictionnaire.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AppDictionnaire"
-             StartupUri="DictionnaireWindow.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
          
     </Application.Resources>
