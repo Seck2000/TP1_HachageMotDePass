@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +19,7 @@ namespace AppHachage
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new HachageViewModel();
         }
     }
 }
