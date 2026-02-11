@@ -1,0 +1,106 @@
+<Window x:Class="AppHachage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppHachage"
+        mc:Ignorable="d"
+        Title="Générateur de Hachage (TP1)" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="Validation de hachage bcrypt"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Margin="0 0 0 16"/>
+
+        <Grid Grid.Row="1" Margin="0 0 0 12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Hachage ciblé :" VerticalAlignment="Center" Margin="0 0 12 0"/>
+            <TextBox Grid.Column="1"
+                     Text="{Binding HashToCrack, UpdateSourceTrigger=PropertyChanged}"
+                     VerticalAlignment="Center"
+                     AcceptsReturn="False"
+                     SpellCheck.IsEnabled="False"
+                     Margin="0"
+                     MinWidth="400"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="0 0 0 12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Fichier dictionnaire :" VerticalAlignment="Center" Margin="0 0 12 0"/>
+            <TextBox Grid.Column="1"
+                     Text="{Binding DictionaryPath, UpdateSourceTrigger=PropertyChanged}"
+                     VerticalAlignment="Center"
+                     IsReadOnly="True"
+                     Margin="0 0 12 0"/>
+            <Button Grid.Column="2"
+                    Content="Parcourir..."
+                    Command="{Binding BrowseDictionaryCommand}"
+                    Width="110"
+                    VerticalAlignment="Center"/>
+        </Grid>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 0 0 16">
+            <Button Content="Démarrer la validation"
+                    Command="{Binding StartValidationCommand}"
+                    Margin="0 0 12 0"/>
+            <Button Content="Annuler"
+                    Command="{Binding CancelValidationCommand}"
+                    IsEnabled="{Binding IsProcessing}"/>
+        </StackPanel>
+
+        <Border Grid.Row="4" Padding="16" BorderThickness="1" BorderBrush="#CCCCCC" CornerRadius="4" Margin="0 0 0 16">
+            <StackPanel>
+                <TextBlock Text="Statistiques" FontSize="16" FontWeight="SemiBold" Margin="0 0 0 8"/>
+                <UniformGrid Columns="2" Rows="2" Margin="0 0 0 8">
+                    <StackPanel>
+                        <TextBlock Text="Mots dans le dictionnaire"/>
+                        <TextBlock Text="{Binding DictionaryCount}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Tentatives effectuées"/>
+                        <TextBlock Text="{Binding AttemptCount}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Temps écoulé"/>
+                        <TextBlock Text="{Binding ElapsedTimeDisplay}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Statut"/>
+                        <TextBlock Text="{Binding StatusMessage}" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </UniformGrid>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="5" Padding="16" BorderThickness="1" BorderBrush="#CCCCCC" CornerRadius="4">
+            <StackPanel>
+                <TextBlock Text="Résultat" FontSize="16" FontWeight="SemiBold" Margin="0 0 0 8"/>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 4">
+                    <TextBlock Text="Mot de passe trouvé :" FontWeight="SemiBold" Margin="0 8 8 0"/>
+                    <TextBlock Text="{Binding FoundPassword}" TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Sel utilisé :" FontWeight="SemiBold" Margin="0 8 8 0"/>
+                    <TextBlock Text="{Binding FoundSalt}" TextWrapping="Wrap"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
