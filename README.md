@@ -59,12 +59,6 @@ Ce projet démontre la maîtrise des technologies suivantes :
     dotnet run --project AppHachage
     ```
 
-## 👥 Auteurs
 
-*   **[Votre Nom]** - *Développeur Backend & Architecture MVVM*
-*   **[Nom Collègue 1]** - *Développeur UI & Algorithme Hachage*
-*   **[Nom Collègue 2]** - *Développeur...*
-*   **[Nom Collègue 3]** - *Développeur...*
 
----
-*Projet académique réalisé au Collège de Rosemont - Hiver 2026.*
+
