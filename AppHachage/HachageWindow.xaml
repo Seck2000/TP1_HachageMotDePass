@@ -27,13 +27,14 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Hachage ciblé :" VerticalAlignment="Center" Margin="0 0 12 0"/>
+            <TextBlock Grid.Column="0" Text="Hachage ciblé :" VerticalAlignment="Center" Margin="0 0 12 0"/>
             <TextBox Grid.Column="1"
                      Text="{Binding HashToCrack, UpdateSourceTrigger=PropertyChanged}"
                      VerticalAlignment="Center"
                      AcceptsReturn="False"
                      SpellCheck.IsEnabled="False"
                      Margin="0"
+                     Padding="5"
                      MinWidth="400"/>
         </Grid>
 
